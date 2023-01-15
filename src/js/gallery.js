@@ -6,8 +6,8 @@ const gallery = document.querySelector('gallery');
 
 const createCard = (galleryCard) => {
     const newImages = galleryCard
-        .map(
-            <div class="photo-card">
+        .map(image=>
+            `<div class="photo-card">
                 <a href="${image.largeImageURL}">
                     <img src="${image.webformatURL}" alt="${image.tags}" loading="lazy" />
       </a>
@@ -17,7 +17,7 @@ const createCard = (galleryCard) => {
                     <p class="info-item"><b>Comments</b>${Image.comments}</p>
                     <p class="info-item"><b>Downloads</b>${Image.dowloads}</p>
                 </div>
-            </div>
+            </div>`
         )
         .join('');
     

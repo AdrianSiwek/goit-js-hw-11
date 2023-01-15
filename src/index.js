@@ -1,3 +1,4 @@
 import SimpleLightbox from "simplelightbox";
-import { scroll } from "./js/scroll";
-import {gallery} from "./js/gallery";
+import {scrollLoading} from "./js/scroll";
+import {createCard} from "./js/gallery";
+import Notiflix from 'notiflix';
