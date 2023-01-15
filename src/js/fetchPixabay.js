@@ -3,7 +3,7 @@ const axios = require('axios').default;
 
 export async function fetchPixabay(valueSearch, numberPage, perPage) {
   try {
-    const response = await axios.get(`https://pixabay.com/api/`, {
+    const resp = await axios.get(`https://pixabay.com/api/`, {
       method: 'get',
       params: {
         key: '32876779-a95b33eb506c24842b74d871c',
@@ -16,17 +16,17 @@ export async function fetchPixabay(valueSearch, numberPage, perPage) {
       },
     });
 
-    if (response.data.totalHits === 0) {
+    if (resp.data.totalHits === 0) {
       Notify.failure(
         'Sorry, there are no images matching your search query. Please try again.'
       );
       return;
     }
 
-    if (response.data.totalHits > 0 && numberPage === 1)
-      Notify.success(`Hooray! We found ${response.data.totalHits} images.`);
+    if (resp.data.totalHits > 0 && numberPage === 1)
+      Notify.success(`Hooray! We found ${resp.data.totalHits} images.`);
 
-    return response.data;
+    return resp.data;
   } catch (error) {
     console.error(error);
   }
