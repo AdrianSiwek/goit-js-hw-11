@@ -1,5 +1,3 @@
-
-
 export { scroll, scrollTop, scrollLoading };
 
 const toTopBtn = document.querySelector('.btn-up');
