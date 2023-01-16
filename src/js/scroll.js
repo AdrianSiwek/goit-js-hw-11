@@ -3,7 +3,7 @@ export {scroll, scrollOnTop, scrollLoading};
     //page scrolling up
 const btnUp = document.querySelector('.btnUp');
 
-window.addEventListener('scroll', scroll);
+// window.addEventListener('scroll', scroll);
 btnUp.addEventListener('click', scrollOnTop);
 
 const scroll = () => {

@@ -16,7 +16,7 @@ let numberPage;
 let perPage = 40;
 btnDown.style.display = 'none';
 
-const lookPicture = () => {
+const lookPicture = event => {
     event.preventDefault();
 
     btnDown.style.display = 'none';
@@ -35,17 +35,42 @@ const lookPicture = () => {
 
             const totalPages = Math.ceil(image.totalHits / perPage);
 
-      if (numberPage === totalPages) {
-        btnDown.style.display = 'none';
-        Notify.failure(
-          "We're sorry, but you've reached the end of search results."
-        );
-        return;
-      }
-      console.log(totalPages);
-    })
-    .catch(error => console.error(error))
-    .finally(() => {
-      Loading.remove();
+            if (numberPage === totalPages) {
+                btnDown.style.display = 'none';
+                Notify.failure(
+                    "We're sorry, but you've reached the end of search results."
+                );
+                return;
+            }
+            console.log(totalPages);
         })
+        .catch(error => console.error(error))
+        .finally(() => {
+            Loading.remove();
+        });
+};
+
+
+const loadingMore = () => {
+    numPage += 1;
+  lightbox.destroy();
+  findPicture();
 }
+
+btnSearch.addEventListener('click', () => {
+  event.preventDefault();
+  valueSearch = formSearch.value;
+  if (valueSearch === '') {
+    Notify.failure(
+      'The search field cannot be empty. Please refine your search.'
+    );
+    return;
+  } else {
+    numPage = 1;
+    gallery.innerHTML = '';
+    findPicture();
+  }
+});
+
+
+btnDown.addEventListener('click', loadingMore)
