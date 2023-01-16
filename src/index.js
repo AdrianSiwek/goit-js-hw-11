@@ -14,7 +14,7 @@ const gallery = document.querySelector(".gallery");
 let lightbox;
 let valueSearch = '';
 let numberPage;
-let perPage = 40;
+let perPage = 20;
 btnDown.style.display = 'none';
 
 const lookPicture = () => {
