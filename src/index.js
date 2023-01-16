@@ -1,12 +1,13 @@
 import SimpleLightbox from "simplelightbox";
 import {scrollLoading} from "./js/scroll";
 import {createCard} from "./js/gallery";
-import Notiflix from 'notiflix';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { fetchPixabay } from "./js/fetchPixabay";
 
 
-const btnSearch = document.querySelector(".btnSearch");
-const inputSearch = document.querySelector(".search-form input");
+const btnSearch = document.querySelector(".btn-search");
+const inputSearch = document.querySelector("#search-form input");
 const btnDown = document.querySelector('.btn-down');
 const gallery = document.querySelector(".gallery");
 
@@ -16,16 +17,16 @@ let numberPage;
 let perPage = 40;
 btnDown.style.display = 'none';
 
-const lookPicture = event => {
+const lookPicture = () => {
     event.preventDefault();
 
     btnDown.style.display = 'none';
-    valueSearch = formSearch.value.trim();
+    valueSearch = inputSearch.value.trim();
 
     fetchPixabay(valueSearch, numberPage, perPage)
         .then(image => {
             Loading.circle();
-            renderCard(image.hits);
+            createCard(image.hits);
         
             if (numberPage !== 1) {
                 scrollLoading(2.45);
@@ -52,23 +53,23 @@ const lookPicture = event => {
 
 
 const loadingMore = () => {
-    numPage += 1;
+    numberPage += 1;
   lightbox.destroy();
-  findPicture();
+  lookPicture();
 }
 
-btnSearch.addEventListener('click', () => {
+btnSearch.addEventListener('click', event => {
   event.preventDefault();
-  valueSearch = formSearch.value;
+  valueSearch = inputSearch.value;
   if (valueSearch === '') {
     Notify.failure(
       'The search field cannot be empty. Please refine your search.'
     );
     return;
   } else {
-    numPage = 1;
+    numberPage = 1;
     gallery.innerHTML = '';
-    findPicture();
+    lookPicture();
   }
 });
 
