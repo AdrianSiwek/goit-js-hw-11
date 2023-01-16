@@ -1,25 +1,25 @@
 
 
-export { onScroll, onToTopBtn, scrollLoading };
+export { scroll, scrollTop, scrollLoading };
 
 const toTopBtn = document.querySelector('.btn-up');
 
-window.addEventListener('scroll', onScroll);
-toTopBtn.addEventListener('click', onToTopBtn);
+window.addEventListener('scroll', scroll);
+toTopBtn.addEventListener('click', scrollTop);
 
-function onScroll() {
+function scroll() {
   const scrolled = window.pageYOffset;
-  const coords = document.documentElement.clientHeight;
+  const coordination = document.documentElement.clientHeight;
 
-  if (scrolled > coords) {
+  if (scrolled > coordination) {
     toTopBtn.style.display = 'block';
   }
-  if (scrolled < coords) {
+  if (scrolled < coordination) {
     toTopBtn.style.display = 'none';
   }
 }
 
-function onToTopBtn() {
+function scrollTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
