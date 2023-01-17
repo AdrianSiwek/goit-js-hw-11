@@ -14,7 +14,7 @@ export const createCard = (galleryCard) => {
                     <p class="info-item"><b>Likes</b>${image.likes}</p>
                     <p class="info-item"><b>Views</b>${image.views}</p>
                     <p class="info-item"><b>Comments</b>${image.comments}</p>
-                    <p class="info-item"><b>Downloads</b>${image.dowloads}</p>
+                    <p class="info-item"><b>Downloads</b>${image.downloads}</p>
                 </div>
             </div>`
         )
