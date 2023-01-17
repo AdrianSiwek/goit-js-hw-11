@@ -29,7 +29,7 @@ const lookPicture = () => {
             createCard(image.hits);
         
             if (numberPage !== 1) {
-                scrollLoading(2.45);
+                scrollLoading(2.7);
             }
             lightbox = new SimpleLightbox('.gallery a').refresh();
             btnDown.style.display = 'block';
