@@ -21,13 +21,13 @@ function scrollTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function scrollLoading(multiplier) {
+const scrollLoading =() => {
   const { height: cardHeight } = document
     .querySelector('.gallery')
     .firstElementChild.getBoundingClientRect();
 
   window.scrollBy({
-    top: cardHeight * multiplier,
+    top: cardHeight * 2,
     behavior: 'smooth',
   });
 }
